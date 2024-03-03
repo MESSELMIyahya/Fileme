@@ -1,3 +1,4 @@
+import HeroSection from "./_components/HeroSection";
 
 
 
@@ -6,10 +7,10 @@
 function LeadingPage (){
 
 
-    return (<div className="container min-h-full">
+    return (<div className="container min-h-full pt-12">
 
-        
-        Hello from leading page 
+        {/* Hero Section */}
+        <HeroSection/>
     
     
     </div>);

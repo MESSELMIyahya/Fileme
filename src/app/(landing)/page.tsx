@@ -1,3 +1,4 @@
+import FeaturesSection from "./_components/FeaturesSection";
 import HeroSection from "./_components/HeroSection";
 
 
@@ -11,6 +12,9 @@ function LeadingPage (){
 
         {/* Hero Section */}
         <HeroSection/>
+
+        {/* Features Section */}
+        <FeaturesSection/>
     
     
     </div>);

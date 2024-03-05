@@ -12,7 +12,7 @@ interface  ViewCardProps {
 
 function ViewCard ({text,selected,onClick}:ViewCardProps){
 
-    return (<button onClick={onClick} className={twMerge("w-full lg:w-[15em] p-6 lg:p-4 text-left lg:text-center rounded-xl border transition-colors border-transparent",selected?'border-border/20 border bg-background/20 cursor-default pointer-events-none':'bg-background/5 hover:bg-background/10 cursor-pointer')}>
+    return (<button onClick={onClick} className={twMerge("w-full lg:w-[15em] p-6 lg:p-4 text-left lg:text-center rounded-xl border transition-colors border-transparent outline-none focus-visible:ring-2 focus-visible:ring-primary",selected?'border-border/20 border bg-background/20 cursor-default pointer-events-none':'bg-background/5 hover:bg-background/10 cursor-pointer')}>
         <h4 className="text-3xl lg:text-2xl font-semibold text-card">{text}</h4>
     </button>)
 }
@@ -26,8 +26,8 @@ function ShowcaseSection() {
         <div className="container">
 
             <div className="w-full flex flex-col items-center gap-4 mb-12">
-                <h3 className="lg:text-5xl text-4xl text-center font-bold uppercase text-white">Our Features</h3>
-                <p className="lg:text-lg text-base text-center text-secondary ">All the features that we provide for you to get the best experience</p>
+                <h3 className="lg:text-3xl text-2xl text-center font-bold uppercase text-white">Our Features</h3>
+                <p className="lg:text-base text-sm text-center text-secondary ">All the features that we provide for you to get the best experience</p>
             </div>
 
             <div className="w-full flex flex-col lg:flex-row justify-center gap-4">

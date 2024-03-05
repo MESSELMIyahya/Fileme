@@ -7,11 +7,11 @@ import {HiChevronRight} from 'react-icons/hi'
 function HeroSection (){
 
 
-    return (<section className="container relative flex justify-center pb-20 pt-16 lg:pt-32">
+    return (<section className="container  relative flex justify-center pb-20 pt-16 lg:pt-32">
 
             <div style={{
                 backgroundImage:"linear-gradient(89.67deg, rgba(89, 150, 255, 0.2) 2.77%, rgba(12, 91, 228, 0.3) 55.21%, rgba(255, 246, 162, 0.3) 105.51%)"
-            }} className="size-[26em] lg:size-[40em] -z-[1] absolute top-1/2 left-1/2 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[130px]">
+            }} className="size-[24em] sm:size-[26em] lg:size-[40em] -z-[1] absolute top-1/2 left-1/2 rounded-full -translate-x-1/2 -translate-y-1/2 blur-[130px]">
 
             </div>
         

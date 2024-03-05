@@ -29,7 +29,7 @@ function FeaturesSection (){
     return (<section className="container flex flex-col gap-8 justify-center pb-20 pt-16 lg:pt-32">
 
         <div className="w-full flex flex-col items-center gap-3 mb-8">
-            <h3 className="lg:text-5xl text-3xl text-center font-bold uppercase text-foreground">Our Features</h3>
+            <h3 className="lg:text-3xl text-2xl text-center font-bold uppercase text-foreground">Our Features</h3>
             <p className="lg:text-base text-sm text-center text-card-foreground/90 ">All the features that we provide for you to get the best experience</p>
         </div>
         

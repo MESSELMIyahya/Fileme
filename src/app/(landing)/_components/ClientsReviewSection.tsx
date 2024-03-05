@@ -87,7 +87,7 @@ const Clients : ({} & ClientCardProps)[] = [
 function ClientsReviewSection () {
 
 
-    return (<section className="container flex flex-col gap-8 justify-center pb-20 pt-16">
+    return (<section className="container flex flex-col gap-8 justify-center pb-8 pt-16">
 
         <div className="w-full flex flex-col items-center gap-3 mb-8">
             <h3 className="lg:text-3xl text-2xl text-center font-bold uppercase text-foreground">Loved and used worldwide</h3>

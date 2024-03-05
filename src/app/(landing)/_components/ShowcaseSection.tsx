@@ -26,7 +26,7 @@ function ShowcaseSection() {
         <div className="container">
 
             <div className="w-full flex flex-col items-center gap-4 mb-12">
-                <h3 className="lg:text-3xl text-2xl text-center font-bold uppercase text-white">Our Features</h3>
+                <h3 className="lg:text-3xl text-2xl text-center font-bold uppercase text-card">Our Features</h3>
                 <p className="lg:text-base text-sm text-center text-secondary ">All the features that we provide for you to get the best experience</p>
             </div>
 

@@ -1,5 +1,6 @@
 import ClientsReviewSection from "./_components/ClientsReviewSection";
 import FeaturesSection from "./_components/FeaturesSection";
+import GetStartedSection from "./_components/GetStartedSection";
 import HeroSection from "./_components/HeroSection";
 import ShowcaseSection from "./_components/ShowcaseSection";
 
@@ -24,8 +25,8 @@ function LeadingPage (){
         {/* Clients Review Section */}
         <ClientsReviewSection/>
 
-        <div className="pt-12">
-        </div>
+        {/* Get Started Now Section */}
+        <GetStartedSection/>
     
     
     </div>);

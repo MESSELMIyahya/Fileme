@@ -1,5 +1,6 @@
 import FeaturesSection from "./_components/FeaturesSection";
 import HeroSection from "./_components/HeroSection";
+import ShowcaseSection from "./_components/ShowcaseSection";
 
 
 
@@ -8,13 +9,21 @@ import HeroSection from "./_components/HeroSection";
 function LeadingPage (){
 
 
-    return (<div className="container min-h-full pt-12">
+    return (<div className="w-full min-h-full pt-12">
 
         {/* Hero Section */}
         <HeroSection/>
 
         {/* Features Section */}
         <FeaturesSection/>
+
+        {/* Showcase Section */}
+
+        <ShowcaseSection/>
+
+
+        <div className="pt-12">
+        </div>
     
     
     </div>);

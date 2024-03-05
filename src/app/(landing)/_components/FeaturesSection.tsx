@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {HiCollection, HiLink, HiOutlineCloudDownload, HiOutlineCollection, HiOutlineDownload, HiOutlineFilter, HiOutlineHand, HiOutlineShieldCheck, HiShieldCheck} from 'react-icons/hi'
+import {HiLink, HiOutlineCloudDownload, HiOutlineCollection, HiOutlineFilter, HiOutlineHand, HiOutlineShieldCheck, HiShieldCheck} from 'react-icons/hi'
 
 
 interface FeatureCardProps  {
@@ -10,13 +10,13 @@ interface FeatureCardProps  {
 
 function FeatureCard ({Icon,des,title}:FeatureCardProps) {
     
-    return (<div className="group w-[21em] p-4 rounded-3xl flex flex-col gap-2 bg-card border-[3px] border-border transition hover:shadow-lg hover:border-blue-500">
+    return (<div className="group w-[21em] p-4 rounded-3xl flex flex-col gap-2 bg-card border-2 border-border transition hover:shadow-lg hover:border-blue-500">
         
         <div className="w-14 h-14 flex justify-center items-center rounded-full bg-primary/20 text-3xl text-primary ">
             {Icon}
         </div>
 
-        <h3 className="text-3xl font-normal text-primary">{title}</h3>
+        <h4 className="text-3xl font-normal text-primary">{title}</h4>
 
         <p className="text-base text-card-foreground">{des}</p>
     
@@ -26,7 +26,12 @@ function FeatureCard ({Icon,des,title}:FeatureCardProps) {
 
 function FeaturesSection (){
 
-    return (<section className="w-full flex justify-center pb-16 pt-16 lg:pt-28">
+    return (<section className="container flex flex-col gap-8 justify-center pb-20 pt-16 lg:pt-32">
+
+        <div className="w-full flex flex-col items-center gap-3 mb-8">
+            <h3 className="lg:text-5xl text-3xl text-center font-bold uppercase text-foreground">Our Features</h3>
+            <p className="lg:text-base text-sm text-center text-card-foreground/90 ">All the features that we provide for you to get the best experience</p>
+        </div>
         
         <div className="flex flex-wrap items-center justify-center gap-8 ">
 

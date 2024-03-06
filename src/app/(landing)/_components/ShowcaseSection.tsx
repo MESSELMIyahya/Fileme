@@ -12,7 +12,7 @@ interface  ViewCardProps {
 
 function ViewCard ({text,selected,onClick}:ViewCardProps){
 
-    return (<button onClick={onClick} className={twMerge("w-full lg:w-[15em] p-6 lg:p-4 text-left lg:text-center rounded-xl border transition-colors border-transparent outline-none focus-visible:ring-2 focus-visible:ring-primary",selected?'border-border/20 border bg-background/20 cursor-default pointer-events-none':'bg-background/5 hover:bg-background/10 cursor-pointer')}>
+    return (<button role="tab"   type="button" aria-selected='true' onClick={onClick} className={twMerge("w-full lg:w-[15em] p-6 lg:p-4 text-left lg:text-center rounded-xl border transition-colors border-transparent outline-none focus-visible:ring-2 focus-visible:ring-primary",selected?'border-border/20 border bg-background/20 cursor-default pointer-events-none':'bg-background/5 hover:bg-background/10 cursor-pointer')}>
         <h4 className="text-3xl lg:text-2xl font-semibold text-card">{text}</h4>
     </button>)
 }

@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import {HiLink, HiOutlineCloudDownload, HiOutlineCollection, HiOutlineFilter, HiOutlineHand, HiOutlineShieldCheck, HiShieldCheck} from 'react-icons/hi'
 
 
@@ -26,6 +25,7 @@ function FeatureCard ({Icon,des,title}:FeatureCardProps) {
 
 function FeaturesSection (){
 
+    
     return (<section className="container flex flex-col gap-8 justify-center pb-20 pt-16 lg:pt-32">
 
         <div className="w-full flex flex-col items-center gap-3 mb-8">

@@ -30,7 +30,7 @@ function FeaturesSection (){
 
         <div className="w-full flex flex-col items-center gap-3 mb-8">
             <h3 className="lg:text-3xl text-2xl text-center font-bold uppercase text-foreground">Our Features</h3>
-            <p className="lg:text-base text-sm text-center text-card-foreground/90 ">All the features that we provide for you to get the best experience</p>
+            <p className="lg:text-base text-sm text-center text-muted-foreground">All the features that we provide for you to get the best experience</p>
         </div>
         
         <div className="flex flex-wrap items-center justify-center gap-8 ">

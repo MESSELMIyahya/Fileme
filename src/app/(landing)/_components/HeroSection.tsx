@@ -22,7 +22,7 @@ function HeroSection (){
             Wasn't Easy Like This
             </h2>
 
-            <p className="lg:w-2/3 w-full text-sm lg:text-lg text-accent-foreground/90 mb-10">
+            <p className="lg:w-2/3 w-full text-sm lg:text-lg text-muted-foreground mb-10">
                 Upload and Download your files like your images ,videos and work content easily without any effort just with FileMe       
             </p>
 

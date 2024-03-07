@@ -91,7 +91,7 @@ function ClientsReviewSection () {
 
         <div className="w-full flex flex-col items-center gap-3 mb-8">
             <h3 className="lg:text-3xl text-2xl text-center font-bold uppercase text-foreground">Loved and used worldwide</h3>
-            <p className="lg:text-base text-sm text-center text-card-foreground/90 ">Our software is so simple that people can’t help but fall in love with it</p>
+            <p className="lg:text-base text-sm text-center text-muted-foreground">Our software is so simple that people can’t help but fall in love with it</p>
         </div>
 
 

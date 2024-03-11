@@ -24,7 +24,7 @@
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 221.2 83.2% 53.3%;
-    --radius: 1rem;
+    --radius: 10px;
   }
 
   .dark {
@@ -56,6 +56,12 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply overflow-x-hidden bg-background text-foreground;
+  }
+
+  /* remove scrollbar */
+  .no-scrollbar {
+    overflow: hidden;
+    scroll-behavior: unset;
   }
 }

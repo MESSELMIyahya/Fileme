@@ -16,8 +16,22 @@ export default function ContactPage() {
 
         <div className="w-full flex justify-center">
 
-        {/* card */}
-        <ContactCard/>
+            {/* card */}
+            <ContactCard
+                accounts={{
+                    x:'/',
+                    instagram:'/',
+                    linkedin:'/'
+                }}
+                des="Leave your email and we will get back to you within 24 hours"
+                title="Contact Info"
+                info={{
+                    address:"Algeria Djelfa Aysa kid",
+                    email:'contact@fileme.com',
+                    phone:'+213 672731441'
+                }}
+
+            />
 
         </div>
     </section>);

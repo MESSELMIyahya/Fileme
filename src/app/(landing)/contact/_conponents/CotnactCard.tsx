@@ -43,7 +43,7 @@ interface Props {
 }
 
 
-export default function ContactCard({ }: {}) {
+export default function ContactCard({ accounts,des,info,title }:Props) {
 
 
     return (<div className="w-full md:w-full xl:w-3/4 flex flex-col gap-4 md:gap-0 md:flex-row justify-between rounded-xl bg-gradient-to-br from-primary to-indigo-600 p-6 md:p-12 ">
@@ -52,33 +52,31 @@ export default function ContactCard({ }: {}) {
 
             {/* title */}
             <div className="">
-                <h3 className="text-3xl font-semibold text-primary-foreground mb-2">Contact Info</h3>
-                <p className="text-sm text-secondary/90">
-                    Leave your email and we will get back to you within 24 hours
-                </p>
+                <h3 className="text-3xl font-semibold text-primary-foreground mb-2">{title}</h3>
+                <p className="text-sm text-secondary/90">{des}</p>
             </div>
 
             {/* contact info */}
             <ul className="flex flex-col gap-3">
-                <InfoItem title="Email" des="contact@fileme.com" Icon={HiOutlineAtSymbol} />
-                <InfoItem title="Phone" des="+213 672731441" Icon={HiOutlinePhone} />
-                <InfoItem title="Address" des="Algeria Djelfa Daya G83" Icon={HiOutlineLocationMarker} />
+                <InfoItem title="Email" des={info.email} Icon={HiOutlineAtSymbol} />
+                <InfoItem title="Phone" des={info.phone} Icon={HiOutlinePhone} />
+                <InfoItem title="Address" des={info.address} Icon={HiOutlineLocationMarker} />
             </ul>
 
             {/* links */}
             <ul className="flex items-center gap-4">
                 <li>
-                    <Link href=''>
+                    <Link href={accounts.x}>
                         <RiTwitterXFill className="w-6 h-6 text-white" />
                     </Link>
                 </li>
                 <li>
-                    <Link href=''>
+                    <Link href={accounts.instagram}>
                         <RiInstagramLine className="w-6 h-6 text-white" />
                     </Link>
                 </li>
                 <li>
-                    <Link href=''>
+                    <Link href={accounts.linkedin}>
                         <RiLinkedinFill className="w-6 h-6 text-white" />
                     </Link>
                 </li>

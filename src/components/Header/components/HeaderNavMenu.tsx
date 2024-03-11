@@ -45,7 +45,7 @@ function HeaderNavMenu({ }: Props) {
             <div className="flex md:flex-row flex-col items-center gap-4 mb-8 md:mb-0">
                 <Link onClick={()=>setNavbarToggle(false)} href='/'        className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Home</Link>
                 <Link onClick={()=>setNavbarToggle(false)} href='/pricing' className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Pricing</Link>
-                <Link onClick={()=>setNavbarToggle(false)} href='/'        className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Contact</Link>
+                <Link onClick={()=>setNavbarToggle(false)} href='/contact'        className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Contact</Link>
             </div>
 
             <div className="flex md:flex-row w-full md:w-auto  flex-col items-center gap-3">

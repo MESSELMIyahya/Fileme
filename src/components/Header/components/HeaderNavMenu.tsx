@@ -34,7 +34,7 @@ function HeaderNavMenu({ }: Props) {
 
         return () =>{
             // remove the event listener
-            window.removeEventListener('resize',resized);
+            window.removeEventListener('resize',resized     );
         }
     },[navbarToggle])
 
@@ -43,9 +43,9 @@ function HeaderNavMenu({ }: Props) {
         <div className={cn('md:gap-8 gap-4 md:items-center md:w-auto md:h-auto md:relative absolute w-full h-[100vh] ',navbarToggle ? " flex flex-col items-center p-12 md:p-0 md:flex-row  top-full left-0 z-40 bg-card/20  backdrop-blur-sm  md:backdrop-blur-none ":"md:flex hidden")}>
 
             <div className="flex md:flex-row flex-col items-center gap-4 mb-8 md:mb-0">
-                <Link href='/'        className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Home</Link>
-                <Link href='/pricing' className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Pricing</Link>
-                <Link href='/'        className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Contact</Link>
+                <Link onClick={()=>setNavbarToggle(false)} href='/'        className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Home</Link>
+                <Link onClick={()=>setNavbarToggle(false)} href='/pricing' className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Pricing</Link>
+                <Link onClick={()=>setNavbarToggle(false)} href='/'        className="text-3xl md:text-lg text-foreground/80 transition-colors hover:text-primary py-2 px-3 bg-card rounded-md w-[7em] text-center md:bg-transparent md:p-0 md:rounded-none md:w-auto">Contact</Link>
             </div>
 
             <div className="flex md:flex-row w-full md:w-auto  flex-col items-center gap-3">

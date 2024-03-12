@@ -49,8 +49,8 @@ function HeaderNavMenu({ }: Props) {
             </div>
 
             <div className="flex md:flex-row w-full md:w-auto  flex-col items-center gap-3">
-                <Button variant="outline" className="rounded-full w-full md:w-auto text-lg h-[3em] md:text-base md:h-10 ">Sign In</Button>
-                <Button                   className="rounded-full w-full md:w-auto text-lg h-[3em] md:text-base md:h-10 ">Start Free</Button>
+                <Button variant="outline" className="rounded-full w-full md:w-auto text-lg h-[3em] md:text-base md:h-10" asChild ><Link href="/signin" >Sign In</Link></Button>
+                <Button                   className="rounded-full w-full md:w-auto text-lg h-[3em] md:text-base md:h-10" asChild ><Link href="/register" >Start Free</Link></Button>
             </div>
 
         </div>

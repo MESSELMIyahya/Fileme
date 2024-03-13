@@ -22,18 +22,16 @@ interface PlanType {
     monthly: boolean;
     // scalable: boolean;
     payments:string[];
-    startDate:number|null;
-    endDate:number|null;
+    startDate?:Date;
+    endDate?:Date;
 }
 
 
 // File Type 
 type FileId = string;
-interface FileType {
-    link:string // => firebase storage link of the file
+export interface FileType {
+    url:string // => firebase storage link of the file
     uploaded:boolean;
-    isUploading:boolean;
-    file:File
     owner:UserID;
     deleted:boolean;
     name:string;
@@ -44,11 +42,11 @@ interface FileType {
 
 type FolderColorType = 'blue' | 'red' ;
 type FolderId = string;
-interface FolderType {
+export interface FolderType {
     name:string;
-    createdIn:string;
+    createdIn:Date;
     color:FolderColorType;// => by default is blue
-    delete:boolean;
+    deleted:boolean;
     size:SizeType; // => the sum of all the  files and folders inside it
     folders:FolderType[];
     files:FileType[]
@@ -57,14 +55,14 @@ interface FolderType {
 
 export interface UserSchemaType {
     account: {
-        OAuth: 'google' | 'github' | false ;
+        OAuth: 'google' | 'github' | 'email' ;
         email: string;
         pic: string;
         password:{
             withPassword:boolean;
             code:string|null;
         }
-        createDate:number;
+        createDate:Date;
         username:string;
         lastEditDate:number;
         firstName: string;

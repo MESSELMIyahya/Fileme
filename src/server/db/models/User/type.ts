@@ -4,6 +4,8 @@
 
 // user ID type 
 
+import { Model } from "mongoose";
+
 type UserID = string;
 
 // Plans Type
@@ -53,8 +55,7 @@ interface FolderType {
 }
 
 
-
-interface UserSchema {
+export interface UserSchemaType {
     account: {
         OAuth: 'google' | 'github' | false ;
         email: string;
@@ -64,6 +65,7 @@ interface UserSchema {
             code:string|null;
         }
         createDate:number;
+        username:string;
         lastEditDate:number;
         firstName: string;
         lastName: string;
@@ -85,3 +87,6 @@ interface UserSchema {
     }
 
 }
+
+
+export type UserModelType =  Model<UserSchemaType>;

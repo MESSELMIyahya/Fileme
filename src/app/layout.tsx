@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AuthProvider from "./auth/AuthProvider";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -24,11 +25,13 @@ export default function RootLayout({
     <html lang="en">
 
       <body className={cn("min-h-screen bg-background font-sans antialiased",fontSans.variable)}>
+      <AuthProvider>
 
         <Header/>
         {children}
         <Footer/>
       
+      </AuthProvider>
       </body>
     </html>
   );

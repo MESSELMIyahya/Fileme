@@ -17,7 +17,7 @@ type SpaceStorageType = number
 type SizeType = number;
 
 // Plan Type
-interface PlanType {
+export interface PlanType {
     type: Plans
     monthly: boolean;
     // scalable: boolean;

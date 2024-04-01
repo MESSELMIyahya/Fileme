@@ -63,21 +63,30 @@ const FolderSchema = new Schema<FolderType>({
     }
 })
 
-
-
 // User Schema 
 
 const UserSchema = new Schema<UserSchemaType>({
     account:{
-        OAuth:{
-            type:String,
-            enum:['github','google','email'],
-            required:true,
+        auth:{
+            password:{
+                required:false,
+                type:String,
+            },
+            oauth:{
+                required:true,
+                type:Boolean
+            },
+            provider:{
+                type:String,
+                enum:['github','google','email'],
+                required:true,
+            },
         },
         email:{
             type:String,
             trim:true,
             unique:true,
+            match: [/^\S+@\S+\.\S+$/, "Email isn't valid"],
             lowercase:true,
             required:true,
         },
@@ -101,40 +110,30 @@ const UserSchema = new Schema<UserSchemaType>({
             type:String,
             required:true,
         },
-        password:{
-            withPassword:{
-                type:Boolean,
-                required:true,
-            },
-            code:{
-                type:String,
-                required:true,
-            }
-        },
-        payment:{
-            type:String,
-            required:false,
-        },
-        plan:{
-            type:{
-                type:String,
-                enum:['free','pro','team','enterprise'],
-                default:'free'
-            },
-            monthly:{
-                type:Boolean,
-                default:false
-            },
-            startDate:{
-                type:Date,
-                required:false
-            },
-            endDate:{
-                type:Date,
-                required:false
-            },
-            payments:[{type:String}]
-        }
+        // payment:{
+        //     type:String,
+        //     required:false,
+        // },
+        // plan:{
+        //     type:{
+        //         type:String,
+        //         enum:['free','pro','team','enterprise'],
+        //         default:'free'
+        //     },
+        //     monthly:{
+        //         type:Boolean,
+        //         default:false
+        //     },
+        //     startDate:{
+        //         type:Date,
+        //         required:false
+        //     },
+        //     endDate:{
+        //         type:Date,
+        //         required:false
+        //     },
+        //     payments:[{type:String}]
+        // }
     },
     storage:{
         space:{

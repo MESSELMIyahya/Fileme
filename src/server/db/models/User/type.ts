@@ -55,20 +55,20 @@ export interface FolderType {
 
 export interface UserSchemaType {
     account: {
-        OAuth: 'google' | 'github' | 'email' ;
         email: string;
-        pic: string;
-        password:{
-            withPassword:boolean;
-            code:string|null;
+        auth:{
+            provider: 'google' | 'github' | 'email' ;
+            password:string;
+            oauth:boolean
         }
+        pic: string;
         createDate:Date;
         username:string;
-        lastEditDate:number;
+        // lastEditDate:number;
         firstName: string;
         lastName: string;
-        payment: string | null;
-        plan: PlanType;
+        // payment: string | null;
+        // plan: PlanType;
     }
 
     storage:{

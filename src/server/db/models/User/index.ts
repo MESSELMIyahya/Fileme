@@ -10,10 +10,10 @@ import UserSchema from './Schema';
 
 UserSchema.pre('save',async function (){
     try{
-        if(this.account.OAuth === 'email' && this.account.password.code){
-            const pass = await bt.hash(this.account.password.code,10); 
+        if(this.account.auth.provider === 'email' && this.account.auth.password){
+            const pass = await bt.hash(this.account.auth.password,10); 
             if(pass){
-                this.account.password.code = pass ;
+                this.account.auth.password = pass ;
             }
         }
     }catch(err){
@@ -67,8 +67,8 @@ UserSchema.static('UpdateTheProfileImage',async function (email:string,url:strin
 // Compare Passwords
 UserSchema.method('ComparePasswords',async function(password:string):Promise<Boolean>{
     try{
-        if(this.account.password.code && this.account.OAuth === 'email'){
-            const res = await bt.compare(password,this.account.password.code);
+        if(this.account.auth.password && this.account.auth.provider === 'email'){
+            const res = await bt.compare(password,this.account.auth.password);
             return res ;
         }else {
             return false ;
@@ -77,9 +77,6 @@ UserSchema.method('ComparePasswords',async function(password:string):Promise<Boo
         throw new Error('Compare Passwords: '+err) ;
     }
 });
-
-
-
 
 
 

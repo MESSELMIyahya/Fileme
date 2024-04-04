@@ -29,7 +29,7 @@ UserSchema.pre('save',async function (){
 
 UserSchema.static('DoesUserExists',async function (email:string):Promise<boolean>{
     try{    
-        const User = await this.findOne({account:{email}})
+        const User = await this.findOne({"account.email":email})
         return User ? true : false ; 
     }catch(err){
         throw new Error('Does User Exists: '+err) ;

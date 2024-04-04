@@ -58,11 +58,10 @@ export interface UserSchemaType {
         email: string;
         auth:{
             provider: 'google' | 'github' | 'email' ;
-            password:string;
+            password?:string;
             oauth:boolean
         }
         pic: string;
-        createDate:Date;
         username:string;
         // lastEditDate:number;
         firstName: string;
@@ -79,8 +78,8 @@ export interface UserSchemaType {
            foldersIDs:FolderId[];
         }
         rootDir:{
-            folders:FolderType[];
-            files:FileType[];
+            folders?:FolderType[];
+            files?:FileType[];
         }
     }
 

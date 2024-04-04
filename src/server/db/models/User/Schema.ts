@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema  } from "mongoose";
 import { UserSchemaType,FileType,FolderType } from "./type";
 
 
@@ -9,7 +9,6 @@ import { UserSchemaType,FileType,FolderType } from "./type";
 const FileSchema = new Schema<FileType>({
     deleted:{
         type:Boolean,
-        required:false,
         default:false
     },
     uploaded:{
@@ -49,10 +48,8 @@ const FolderSchema = new Schema<FolderType>({
     deleted:{
         type:Boolean,
         default:false,
-        require:false,
     },
-    folders:[this],
-    files:[FileSchema],
+    files:[{type:FileSchema}],
     name:{
         type:String,
         required:true,
@@ -61,7 +58,10 @@ const FolderSchema = new Schema<FolderType>({
         type:Number,
         required:true,
     }
-})
+});
+
+// add folders to it self
+FolderSchema.add({folders:[{type:FolderSchema}]})
 
 // User Schema 
 
@@ -93,10 +93,6 @@ const UserSchema = new Schema<UserSchemaType>({
         pic:{
             type:String,
             required:true,
-        },
-        createDate:{
-            type:Date,
-            required:true
         },
         username:{
             type:String,
@@ -138,21 +134,27 @@ const UserSchema = new Schema<UserSchemaType>({
     storage:{
         space:{
             required:true,
-            type:String,
+            type:Number,
         },
         freeSpace:{
             required:true,
-            type:String,
+            type:Number,
         },
         all:{
             filesIDs:[Schema.ObjectId],
             foldersIDs:[Schema.ObjectId],
         },
         rootDir:{
-            folders:FolderSchema,
-            files:[FileSchema]
+            folders:[{
+                type:FolderSchema
+            }],
+            files:[{
+                type:FileSchema
+            }]
         }
     }
+},{
+    timestamps:true
 });
 
 

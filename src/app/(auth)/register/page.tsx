@@ -6,13 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState } from "react";
-import { RiGithubFill, RiGoogleFill } from "react-icons/ri";
+import { RiGoogleFill } from "react-icons/ri";
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { RegisterBodyType } from "@/lib/type";
 import {z} from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from 'axios'
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 
 
@@ -41,7 +42,7 @@ function RegisterPage() {
     })
     const [err, setErr] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const { replace } = useRouter()
+    const { replace,refresh } = useRouter()
 
 
     const HandleRegister: SubmitHandler<FormDataType> = async (data) => {
@@ -56,7 +57,29 @@ function RegisterPage() {
                 username:data.username
             }
             await axios.post('/api/auth/register',body);
-            replace('/');
+            // login user after creating the account
+            const ra  = await signIn("credentials",{
+                password:data.password,
+                email:data.email,
+                redirect:false
+            });
+
+            if(ra?.error){
+                // redirect him to log in manly
+                // replace('/signin');
+                setErr('somethings went wrong ,Try again');
+                console.log(err);
+                setIsLoading(false);
+                return ;
+            }
+
+            if(ra?.ok){
+                replace('/');
+                refresh();
+                setIsLoading(false);
+                return ;
+            }
+
         }catch(err:any){
             if(err?.response?.status === 409){
                 setError('email',{message:'This email is used before try another or login'})
@@ -81,11 +104,7 @@ function RegisterPage() {
             </CardHeader>
 
             <CardContent className="flex justify-evenly gap-2">
-
-
-                <Button variant='outline' disabled={isLoading} className="w-1/2 font-semibold  gap-1"> <RiGithubFill className="w-5 h-5" /> Github</Button>
-                <Button variant='outline' disabled={isLoading} className="w-1/2 font-semibold  gap-1"> <RiGoogleFill className="w-5 h-5" /> Google</Button>
-
+                <Button onClick={()=>signIn('google')} variant='outline' disabled={isLoading} className="w-full font-semibold  gap-1"><RiGoogleFill className="w-5 h-5" /> Google</Button>
             </CardContent>
 
             <CardContent className="w-full flex items-center gap-4">

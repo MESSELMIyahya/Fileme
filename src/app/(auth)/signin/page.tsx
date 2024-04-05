@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
-import { RiGithubFill, RiGoogleFill } from "react-icons/ri";
+import { RiGoogleFill } from "react-icons/ri";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 

@@ -11,6 +11,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { RiGithubFill, RiGoogleFill } from "react-icons/ri";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 
 
 
@@ -19,7 +20,7 @@ import { z } from "zod";
 
 const LoginSchema = z.object({
     email: z.string().email('email is not valid'),
-    password:z.string().min(8,'The password should be more then 8 characters')
+    password: z.string().min(8, 'The password should be more then 8 characters')
 })
 
 
@@ -36,12 +37,36 @@ function SignInPage() {
 
     const [err, setErr] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const {replace,refresh} = useRouter()
 
 
     const HandleLogin: SubmitHandler<LoginFormType> = async (data) => {
-
+        setErr('');
         setIsLoading(true);
+        try {
+            // login user after creating the account
+            const ra = await signIn("credentials", {
+                password: data.password,
+                email: data.email,
+                redirect: false
+            });
 
+            if (ra?.error) {
+                setErr('Email/password is wrong,try again or create account');
+                setIsLoading(false);
+                return;
+            }
+
+            if (ra?.ok) {
+                replace('/');
+                refresh();
+                setIsLoading(false);
+                return;
+            }
+        } catch (err) {
+            setErr('somethings went wrong ,Try again');
+            console.log(err);
+        }
     }
 
 
@@ -59,11 +84,7 @@ function SignInPage() {
             </CardHeader>
 
             <CardContent className="flex justify-evenly">
-
-
-                <Button variant='outline' disabled={isLoading} className="w-[10em] font-semibold  gap-1"> <RiGithubFill className="w-5 h-5" /> Github</Button>
-                <Button onClick={()=>signIn('google')} variant='outline' disabled={isLoading} className="w-[10em] font-semibold  gap-1"> <RiGoogleFill className="w-5 h-5" /> Google</Button>
-
+                <Button onClick={() => signIn('google')} variant='outline' disabled={isLoading} className="w-full font-semibold  gap-1"><RiGoogleFill className="w-5 h-5" /> Google</Button>
             </CardContent>
 
             <CardContent className="w-full flex items-center gap-4">

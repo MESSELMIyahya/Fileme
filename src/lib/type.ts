@@ -8,5 +8,15 @@ export interface RegisterBodyType {
     email:string;
     password:string;
     firstName:string;
-    lastName:string
+    lastName:string;
 }
+
+
+
+// Files type 
+export type FilesTypes = 'video' | 'image' | 'file' | 'pack' |'text' | 'code' ;
+
+
+// Folder colors type 
+
+export type FolderColorsType = 'red' | 'blue' | 'green' | 'gray' 

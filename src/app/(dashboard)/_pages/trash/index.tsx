@@ -5,7 +5,7 @@
 
 
 
-export default function HomePage (){
+export default function TrashPage (){
 
 
 

@@ -23,7 +23,7 @@ export default function PathsRootPage ({params}:Props){
             <NavBar />
             <FoldersBreadcrumbs path={params.paths} steps={[]}/>
             </div>
-                 <div className="flex flex-1 h-full overflow-hidden overflow-y-scroll flex-col gap-4 p-4 lg:gap-6 lg:p-6">
+                 <div className="flex flex-1 h-full overflow-hidden overflow-y-auto flex-col gap-4 p-4 lg:gap-6 lg:p-6">
                     {page == 'home' ? <HomePage path={params.paths} /> : page == 'trash' ? <TrashPage/> : <FavPage/>}             
                  </div>
         </div>

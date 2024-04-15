@@ -1,11 +1,10 @@
 import { AuthOptions } from 'next-auth'
 // import GithubProvider, { GithubProfile } from 'next-auth/providers/github';
-import CredentialsProvider, { CredentialInput } from 'next-auth/providers/credentials'
+import CredentialsProvider from 'next-auth/providers/credentials'
 import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google';
 import { connectToDB } from '../db';
 import { UserSchemaType } from '../db/models/User/type';
 import UserModel from '../db/models/User';
-import { calcSize, freeStorageSize } from '@/lib/storage';
 
 
 const authOptions: AuthOptions = {
@@ -62,16 +61,7 @@ const authOptions: AuthOptions = {
                             pic: googleUser.picture,
                         },
                         storage: {
-                            all: {
-                                filesIDs: [],
-                                foldersIDs: []
-                            },
-                            freeSpace: calcSize(freeStorageSize, 'MB'),
-                            space: calcSize(freeStorageSize, 'MB'),
-                            rootDir: {
-                                files: [],
-                                folders: []
-                            }
+                            projects:[]
                         },
                     }
 

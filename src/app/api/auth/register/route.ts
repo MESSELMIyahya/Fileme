@@ -1,4 +1,3 @@
-import { calcSize, freeStorageSize } from "@/lib/storage";
 import { RegisterBodyType } from "@/lib/type";
 import { connectToDB } from "@/server/db";
 import UserModel from "@/server/db/models/User";
@@ -45,16 +44,7 @@ export async function POST(req:NextRequest) {
                 pic:'no-pic'
             },
             storage:{
-                all:{
-                    filesIDs:[],
-                    foldersIDs:[]
-                },
-                freeSpace:calcSize(freeStorageSize,'MB'),
-                space:calcSize(freeStorageSize,'MB'),
-                rootDir:{
-                    files:[],
-                    folders:[]
-                }
+                projects:[]
             },
         } 
 

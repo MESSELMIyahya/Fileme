@@ -1,20 +1,44 @@
-
-
-
-
 // user ID type 
 
+import { firebaseConfigType } from "@/types/firebase";
 import { Model } from "mongoose";
 
 type UserID = string;
 
+
+// Storage Provider type ;
+
+type StorageProviderType = 'firebase' | 'supabase' | '' ;
+
+// Project Type 
+
+export interface ProjectType {
+    mainInfo:{
+        name:string;
+        description:string;
+        deleted:boolean;
+        createdIn:Date;
+    }
+    storage:{
+        provider:{
+            config:firebaseConfigType;
+            service:StorageProviderType // => BAAS like Firebase or Supabase
+        }
+        bucketsNumber:number;
+        buckets:{
+            id:string;
+            name:string
+            path?:string // => for firebase bucket
+        }[]
+    }   
+    
+}
+
+
+
 // Plans Type
 type Plans = 'free' | 'pro' | 'team' | 'enterprise'
 
-// Storage Type
-// 1GB for free , 10GB for pro , 100GB for team , Custom for Enterprise
-type SpaceStorageType = number
-type SizeType = number;
 
 // Plan Type
 export interface PlanType {
@@ -24,32 +48,6 @@ export interface PlanType {
     payments:string[];
     startDate?:Date;
     endDate?:Date;
-}
-
-
-// File Type 
-type FileId = string;
-export interface FileType {
-    url:string // => firebase storage link of the file
-    uploaded:boolean;
-    owner:UserID;
-    deleted:boolean;
-    name:string;
-    size:SizeType
-}
-
-// folder type 
-
-type FolderColorType = 'blue' | 'red' ;
-type FolderId = string;
-export interface FolderType {
-    name:string;
-    createdIn:Date;
-    color:FolderColorType;// => by default is blue
-    deleted:boolean;
-    size:SizeType; // => the sum of all the  files and folders inside it
-    folders:FolderType[];
-    files:FileType[]
 }
 
 
@@ -71,16 +69,7 @@ export interface UserSchemaType {
     }
 
     storage:{
-        space:SpaceStorageType;
-        freeSpace:SpaceStorageType;
-        all:{
-           filesIDs:FileId[];
-           foldersIDs:FolderId[];
-        }
-        rootDir:{
-            folders?:FolderType[];
-            files?:FileType[];
-        }
+        projects:ProjectType[];
     }
 
 }

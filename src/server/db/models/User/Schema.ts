@@ -1,110 +1,112 @@
-import { Schema  } from "mongoose";
-import { UserSchemaType,FileType,FolderType } from "./type";
+import { Schema } from "mongoose";
+import { UserSchemaType, ProjectType } from "./type";
+import { storageProviders } from "@/server/storage/config";
 
 
-
-
-// File Schema
-
-const FileSchema = new Schema<FileType>({
-    deleted:{
-        type:Boolean,
-        default:false
+// Projects schema 
+const projectSchema = new Schema<ProjectType>({
+    mainInfo: {
+        name: {
+            required: true,
+            type: String,
+            trim: true,
+        },
+        description: {
+            required: true,
+            type: String,
+            trim: true,
+        },
+        deleted: {
+            required: true,
+            type: Boolean
+        },
+        createdIn: {
+            required: true,
+            type: Date
+        }
     },
-    uploaded:{
-        type:Boolean,
-        required:true,
-    },
-    url:{
-        type:String,
-        required:true,
-    },
-    name:{
-        type:String,
-        required:true,
-    },
-    owner:Schema.ObjectId,
-    size:{
-        type:Number,
-        required:true,
+    storage: {
+        provider: {
+            config: {
+                type:Schema.Types.Mixed,
+            },  
+            service: {
+                type: String,
+                enum: storageProviders,
+                required:true,
+            },
+        },
+        bucketsNumber:{
+            type:Number,
+            required:true,
+            default:0
+        },
+        buckets:[
+            {
+                id:{
+                    required:true,
+                    type:String,
+                },
+                name: {
+                    required: true,
+                    type: String,
+                    trim: true,
+                },
+                path: {
+                    required: false,
+                    type: String,
+                },
+
+            }
+        ]
     }
+}, {
+    _id: true
 })
 
-
-
-// Folder Schema 
-
-const FolderSchema = new Schema<FolderType>({
-    color:{
-        default:'blue',
-        type:String,
-        required:false,
-        enum:['blue','red']
-    },
-    createdIn:{
-        type:Date,
-        required:true,
-    },
-    deleted:{
-        type:Boolean,
-        default:false,
-    },
-    files:[{type:FileSchema}],
-    name:{
-        type:String,
-        required:true,
-    },
-    size:{
-        type:Number,
-        required:true,
-    }
-});
-
-// add folders to it self
-FolderSchema.add({folders:[{type:FolderSchema}]})
 
 // User Schema 
 
 const UserSchema = new Schema<UserSchemaType>({
-    account:{
-        auth:{
-            password:{
-                required:false,
-                type:String,
+    account: {
+        auth: {
+            password: {
+                required: false,
+                type: String,
             },
-            oauth:{
-                required:true,
-                type:Boolean
+            oauth: {
+                required: true,
+                type: Boolean
             },
-            provider:{
-                type:String,
-                enum:['github','google','email'],
-                required:true,
+            provider: {
+                type: String,
+                enum: ['github', 'google', 'email'],
+                required: true,
             },
         },
-        email:{
-            type:String,
-            trim:true,
-            unique:true,
+        email: {
+            type: String,
+            trim: true,
+            unique: true,
             match: [/^\S+@\S+\.\S+$/, "Email isn't valid"],
-            lowercase:true,
-            required:true,
+            lowercase: true,
+            required: true,
         },
-        pic:{
-            type:String,
-            required:true,
+        pic: {
+            type: String,
+            required: true,
         },
-        username:{
-            type:String,
-            required:true,
+        username: {
+            type: String,
+            required: true,
         },
-        lastName:{
-            type:String,
-            required:true,
+        lastName: {
+            type: String,
+            required: true,
         },
-        firstName:{
-            type:String,
-            required:true,
+        firstName: {
+            type: String,
+            required: true,
         },
         // payment:{
         //     type:String,
@@ -131,30 +133,11 @@ const UserSchema = new Schema<UserSchemaType>({
         //     payments:[{type:String}]
         // }
     },
-    storage:{
-        space:{
-            required:true,
-            type:Number,
-        },
-        freeSpace:{
-            required:true,
-            type:Number,
-        },
-        all:{
-            filesIDs:[Schema.ObjectId],
-            foldersIDs:[Schema.ObjectId],
-        },
-        rootDir:{
-            folders:[{
-                type:FolderSchema
-            }],
-            files:[{
-                type:FileSchema
-            }]
-        }
+    storage: {
+        projects: [projectSchema]
     }
-},{
-    timestamps:true
+}, {
+    timestamps: true
 });
 
 
